@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>title name</title>
+
+    <script>
+      // for : 가장 많이 사용하는 반복문
+      for (var i = 0; i < 10; i++) {
+        console.log(i);
+      }
+
+      console.log("\n---------------------------------------\n");
+
+      // 변수 result는 메모리 상에 선언만 되고 초기화되지 않았기 때문에 기본값이 undefined 로 설정됨
+      // undefined는 정수타입의 데이터 타입이 아니기 때문에 숫자와 연산이 불가능하여 undefined와 숫자 타입과 연산 후 결과가 NaN(Nat a Number)이 출력됨
+
+      // 자바스크립트에서 연산용으로 사용할 변수에 초기화가 중요함
+      var result = 0; // 1 ~ 10까지의 합을 저장할 변수
+      var i;
+
+      for (i = 1; i < 11; i++) {
+        result = result + i;
+      }
+      console.log("1 ~ 10까지의 합은 " + result + "입니다.");
+
+      console.log("\n---------------while 문--------------\n");
+
+      // while 문 : 가장 기본적인 반복문
+      // 초기식이 while 문 밖에 존재함
+      // 증감식이 실행코드 영역(코드 블럭)에 같이 존재함
+      // 조건식만 while 문 키워드와 함께 사용
+      // while 문은 초기식과 증감식이 while 문 선언과 동시에 존재하는 것이 아니기
+      // 때문에 초기식은 while 문이 종료된 후에도 계속 메모리에 남아있으며, 증감식은 사용하는
+      // 위치에 따라 결과가 다르게 출력될 수 있음
+
+      var count = 0;
+
+      while (count < 10) {
+        console.log(count);
+        count++;
+      }
+
+      console.log("\n-----------주의점 1, 증감식 위치-----------\n");
+      console.log("\n-----------증감식을 마지막에 사용-----------\n");
+
+      var count = 0;
+
+      while (count < 10) {
+        console.log(count);
+        count++;
+      }
+
+      console.log("\n-----------증감식을 처음에 사용-----------\n");
+
+      var count = 0;
+
+      while (count < 10) {
+        count++;
+        console.log(count);
+      }
+
+      console.log("\n-----------주의점 2, 초기식의 값이 남아있음-----------\n");
+      console.log("\n-----------초기식 처음 사용-----------\n");
+      // 초기식에 사용된 변수를 계속 활용할 경우 기존의 while문에서 증감된 데이터가 그대로 메모리에 남아있기 때문에
+      // 오류가 발생할 가능성이 높음
+      // for문의 경우는 초기식, 조건식, 증감식을 한번에 입력하도록 형태를 고정하고 있어서
+      // 이러한 재활용 오류가 발생할 가능성이 낮음
+
+      var count2 = 0;
+
+      while (count2 < 5) {
+        console.log(count2);
+        count2++;
+      }
+
+      console.log("\n-----------초기식 재활용 사용-----------\n");
+
+      while (count2 < 5) {
+        console.log(count2);
+        count2++;
+      }
+
+      console.log("\n-----------주의점 3, 증감식 미 입력-----------\n");
+      // 증감식 부분을 미입력하게 되면 무한루프에 빠짐
+      var count3 = 0;
+
+      // while (count3 > 5){
+      //   console.log(count3);
+      //   // count3 ++;
+      // }
+
+      var i;
+
+      for (i = 0; i < 5; i++) {
+        console.log(i);
+      }
+
+      console.log("\n----------------------------\n");
+
+      var i = 1;
+      var result = 0;
+
+      while (i <= 10) {
+        result += i;
+        i++;
+      }
+      console.log("1 ~ 10까지의 합은 " + result + " 입니다.");
+
+      console.log("\n---------do ~ while문-----------\n");
+
+      // do ~ while 문
+      // while문과 동일한 형태의 반복문, do ~ while문은 조건문을 나중에
+      // 확인하는 형태의 반복문, 무조건 1번은 반복문을 실행하는 형태의 반복문
+
+      console.log("\n---------조건이 true일 경우-----------\n");
+      var count4 = 0; // 1. 초기식
+
+      do {
+        console.log(count4); // 2. 반복 코드
+        count4++; // 3. 증감식
+      } while (count4 < 5); // 4. 조건식
+
+      console.log("\n---------조건이 false일 경우-----------\n");
+      do {
+        console.log(count4); // 2. 반복 코드
+        count4++; // 3. 증감식
+      } while (count4 < 5); // 4. 조건식
+
+      console.log("\n---------break와 continue-----------\n");
+      // break
+      // 반복문 및 switch ~ case 문에서 사용되며, break문을 만나면 해당 반복문 및
+      // switch ~ case문을 즉시 종료함
+
+      // continue
+      // 반복문에서 사용되며,continue문을 만나면 해당 루프를 종료하고 다음 루프를 시작함
+
+      console.log("\n---------break 사용시-----------\n");
+
+      for (var i = 0; i < 10; i++){
+        if (i == 5){
+          break;
+        }
+        console.log("현재 i의 값 : " + i);
+      }
+
+      console.log("\n---------continue 사용시-----------\n");
+
+      for (var i = 0; i < 10; i++){
+        if (i == 5){
+          continue;
+        }
+        console.log("현재 i의 값 : " + i);
+      }
+
+      console.log("\n---------for 구구단-----------\n");
+
+      var i;
+      var l;
+
+      for (i = 2; i <= 9; i++){
+        console.log("[" +  i + "단" + "]")
+      for(l = 1; l <= 9; l++){
+        console.log(i + "*" + l + "=" + (i * l));
+      }
+    }
+
+    console.log("\n---------while 구구단-----------\n");
+
+    var x = 2;
+    var y = 1; // 내부의 while문에서 처음 실행되었을 때 count의 숫자가
+              //10까지 올라감, count를 다시 1로 초기화 해줘야 함
+
+    while(x <= 9){
+      console.log("[" +  x + "단" + "]");
+
+      while(y <= 9){
+        console.log(x + " * " + y + " = " + (x*y));
+        y++;
+      }
+      y=1;
+      x++;
+    }
+    console.log("\n-----------------------\n");
+    // 문제 6) 사용자에게서 숫자를 입력받아 홀수 인지 짝수인지 구분하는
+    // 프로그램을 작성하세요.
+    // if 문, % 사용
+    var num = prompt("숫자를 입력해주세요.");
+
+    // isNaN() : 매개변수로 받은 데이터가 숫자인지 아닌지를 판별하는 함수
+    // 숫자가 아닌결우 true를 출력, 숫자일 경울 false를 출력
+    if(isNaN(num) == false){
+      num = Number(num);
+
+      if((num % 2)==0){
+      console.log("입력된 값은 " + num + " 이고, 짝수입니다.");
+      }
+      else{
+        console.log("입력된 값은 " + num + " 이고, 홀수입니다.")
+      }
+    }else{
+      alert("입력된 값이 숫자가 아닙니다.")
+    }
+    
+    
+    
+    // 문제 7) 1 ~ 100까지의 숫자 중 3의 배수를 화면에 모두 출력하고, 몇개인지
+    // 개수도 함께 출력하는 프로그램을 작성하세요.
+    // if 문, % 사용
+    console.log("\n-----------------------\n");
+    
+    let cnt = 0; // 3의 배수를 카운트할 변수
+
+    
+    for(let x = 1; x <= 100; x ++) {
+      if((x % 3) == 0) {  //  x랑 3이랑 나눠서 나머지 0 <- 3배수
+        console.log("3의 배수 : " + x);
+        cnt ++;
+      }1
+    }
+    console.log("3의 배수는 " + cnt + "개");
+
+    // while(i){
+    //   i+=3;
+    //   if(i>100)
+    //   break;
+    //   console.log(i);
+    // }
+
+    </script>
+  </head>
+  <body></body>
+</html>
